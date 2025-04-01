@@ -167,7 +167,6 @@ def display_risk(living_nursing, weight_loss, BMI, GDS, gait_speed, TUG_time,
     # 计算风险（输入特征顺序与训练时一致）
     risk = calculate_fall_risk(ln_value, wl_value, BMI, GDS, gait_speed, TUG_time, 
                                 balance, frailty, stride_time_std, cadence_std, heel_strike, ts_value)
-    st.write(f"预测跌倒风险概率: {risk:.4f}")
     # 将风险转换为百分制
     score = risk * 100
     st.write(f"预测跌倒风险评分: {score:.2f} 分")
@@ -199,15 +198,15 @@ st.title("老年人跌倒风险评估系统")
 # 控件：请确保输入的数值范围与训练数据一致
 living_nursing_input = st.selectbox("是否住在养老院", options=["是", "否"], index=1)
 weight_loss_input = st.selectbox("是否意外体重减轻", options=["是", "否"], index=1)
-BMI_input = st.slider("BMI", min_value=15.0, max_value=40.0, value=25.0, step=0.1)
-GDS_input = st.slider("GDS问卷指数", min_value=1, max_value=7, value=3, step=1)
-gait_speed_input = st.slider("步态速度 (m/s)", min_value=0.0, max_value=2.0, value=1.0, step=0.01)
-TUG_time_input = st.slider("TUG测试时间 (秒)", min_value=5.0, max_value=30.0, value=10.0, step=0.1)
-balance_input = st.slider("平衡测试指数", min_value=0.0, max_value=4.0, value=2.0, step=0.1)
-frailty_input = st.slider("衰弱评估指数", min_value=0.0, max_value=5.0, value=2.0, step=0.1)
-stride_time_std_input = st.slider("步态时间STD (秒)", min_value=0.0, max_value=0.25, value=0.1, step=0.01)
-cadence_std_input = st.slider("步频STD", min_value=0.0, max_value=10.0, value=1.0, step=0.1)
-heel_strike_input = st.slider("Heel-Strike角度 (°)", min_value=0.0, max_value=40.0, value=10.0, step=0.1)
+BMI_input = st.slider("BMI", min_value=15.0, max_value=40.0, value=15.0, step=0.1)
+GDS_input = st.slider("GDS问卷指数", min_value=1, max_value=7, value=1, step=1)
+gait_speed_input = st.slider("步态速度 (m/s)", min_value=0.0, max_value=2.0, value=0.0, step=0.01)
+TUG_time_input = st.slider("TUG测试时间 (秒)", min_value=5.0, max_value=30.0, value=5.0, step=0.1)
+balance_input = st.slider("平衡测试指数", min_value=0.0, max_value=4.0, value=0.0, step=1)
+frailty_input = st.slider("衰弱评估指数", min_value=0.0, max_value=5.0, value=0.0, step=1)
+stride_time_std_input = st.slider("步态时间STD (秒)", min_value=0.0, max_value=0.25, value=0.0, step=0.01)
+cadence_std_input = st.slider("步频STD", min_value=0.0, max_value=10.0, value=0.0, step=0.1)
+heel_strike_input = st.slider("Heel-Strike角度 (°)", min_value=0.0, max_value=40.0, value=0.0, step=0.1)
 test_surface_input = st.selectbox("测试表面", options=["室外", "室内"], index=0)
 
 if st.button("计算跌倒风险"):
