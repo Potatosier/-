@@ -3,3 +3,4 @@ plotly
 requests
 numpy
 scikit-learn
+xgboost
