@@ -188,7 +188,7 @@ def display_risk(living_nursing, weight_loss, BMI, GDS, gait_speed, TUG_time,
     prompt = build_prompt(ln_value, wl_value, BMI, GDS, gait_speed, TUG_time,
                           balance, frailty, stride_time_std, cadence_std, heel_strike, ts_value, level)
     ai_reply = get_deepseek_response(prompt)
-    st.write("💡 DeepSeek AI建议：")
+    st.write("💡DeepSeek AI建议：")
     st.write(ai_reply)
 
 # ----------------------------
